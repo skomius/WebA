@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <StartupObject>WebA.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\app\**" />
+    <Content Remove="wwwroot\app\**" />
+    <EmbeddedResource Remove="wwwroot\app\**" />
+    <None Remove="wwwroot\app\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\app\about.component.ts" />
+    <None Remove="Scripts\app\app.component.ts" />
+    <None Remove="Scripts\app\app.module.ts" />
+    <None Remove="Scripts\app\app.routing.ts" />
+    <None Remove="Scripts\app\favourites.component.ts" />
+    <None Remove="Scripts\app\home.component.ts" />
+    <None Remove="Scripts\app\item-detail-edit.component.ts" />
+    <None Remove="Scripts\app\item-detail-view.component.ts" />
+    <None Remove="Scripts\app\item-list.component.ts" />
+    <None Remove="Scripts\app\item.ts" />
+    <None Remove="Scripts\app\login.component.ts" />
+    <None Remove="Scripts\app\main.ts" />
+    <None Remove="Scripts\app\object.ts" />
+    <None Remove="Scripts\app\page-not-found.component.ts" />
+    <None Remove="Scripts\app\post.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Scripts\less\Style.less" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\about.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\app.module.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="TinyMapper" Version="2.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\app.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\app.routing.ts" />
+    <TypeScriptCompile Include="Scripts\app\favourites.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\home.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\item-detail-view.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\item-detail-edit.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\item-list.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\item.ts" />
+    <TypeScriptCompile Include="Scripts\app\login.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\main.ts" />
+    <TypeScriptCompile Include="Scripts\app\object.ts" />
+    <TypeScriptCompile Include="Scripts\app\page-not-found.component.ts" />
+    <TypeScriptCompile Include="Scripts\app\post.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Scripts\js\" />
+    <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+</Project>
