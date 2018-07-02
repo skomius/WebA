@@ -1,4 +1,6 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component, OnInit } from "@angular/core";
+import { Router, Route, NavigationEnd } from "@angular/router"
+
 @Component({
     selector: "opengamelist",
     template: `
@@ -12,6 +14,12 @@
 <router-outlet></router-outlet>
 `
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit {
+
     title = "OpenGameList";
+
+    ngOnInit() {
+        window.location.href
+    }
 }

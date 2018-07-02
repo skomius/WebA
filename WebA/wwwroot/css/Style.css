@@ -6,7 +6,7 @@ item-list {
   padding: 10px;
 }
 item-list.latest {
-  background-color: #f9f9f9;
+  background-color: #ff6a00;
 }
 item-list.most-viewed {
   background-color: #f0f0f0;
