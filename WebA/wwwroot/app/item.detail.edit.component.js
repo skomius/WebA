@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "./item.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "./item.service", "./item"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", "./item.service"], function
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, item_service_1, ItemDetailViewComponent;
+    var core_1, router_1, item_service_1, item_1, ItemDetailEditComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -21,10 +21,13 @@ System.register(["@angular/core", "@angular/router", "./item.service"], function
             },
             function (item_service_1_1) {
                 item_service_1 = item_service_1_1;
+            },
+            function (item_1_1) {
+                item_1 = item_1_1;
             }
         ],
         execute: function () {
-            ItemDetailViewComponent = class ItemDetailViewComponent {
+            ItemDetailEditComponent = class ItemDetailEditComponent {
                 constructor(itemService, router, activatedRoute) {
                     this.itemService = itemService;
                     this.router = router;
@@ -36,31 +39,55 @@ System.register(["@angular/core", "@angular/router", "./item.service"], function
                         this.itemService.get(id).subscribe(item => this.item = item);
                     }
                     else if (id === 0) {
-                        console.log("id is 0: switching to edit mode...");
-                        this.router.navigate(["item/edit", 0]);
+                        console.log("id is 0: adding a new item...");
+                        this.item = new item_1.Item(0, "New Item", null);
                     }
                     else {
                         console.log("Invalid id: routing back to home...");
                         this.router.navigate([""]);
                     }
                 }
-                onItemDetailEdit(item) {
-                    this.router.navigate(["item/edit", item.Id]);
+                onInsert(item) {
+                    this.itemService.add(item).subscribe((data) => {
+                        this.item = data;
+                        console.log("Item " + this.item.Id + " has been added.");
+                        this.router.navigate([""]);
+                    }, (error) => console.log(error));
+                }
+                onBack() {
+                    this.router.navigate([""]);
+                }
+                onItemDetailView(item) {
+                    this.router.navigate(["item/view", item.Id]);
+                }
+                onUpdate(item) {
+                    this.itemService.update(item).subscribe((data) => {
+                        this.item = data;
+                        console.log("Item " + this.item.Id + " has been updated");
+                        this.router.navigate(["item/view", this.item.Id]);
+                    }, (bad) => console.log(bad));
+                }
+                onDelete(item) {
+                    var id = item.Id;
+                    this.itemService.delete(id).subscribe(() => {
+                        console.log("Item " + this.item.Id + " has been deleted");
+                        this.router.navigate([""]);
+                    }, (bad) => console.log(bad));
                 }
             };
-            ItemDetailViewComponent = __decorate([
+            ItemDetailEditComponent = __decorate([
                 core_1.Component({
-                    selector: "item-detail-view",
-                    templateUrl: "app/item-detail-view.component.html",
-                    styleUrls: ["app/item-detail-view.component.css"],
+                    selector: "item-detail-edit",
+                    templateUrl: "html/item-detail-edit.html",
+                    styleUrls: ["style/item-detail-edit.css"]
                 }),
                 __metadata("design:paramtypes", [item_service_1.ItemService,
                     router_1.Router,
                     router_1.ActivatedRoute])
-            ], ItemDetailViewComponent);
-            exports_1("ItemDetailViewComponent", ItemDetailViewComponent);
+            ], ItemDetailEditComponent);
+            exports_1("ItemDetailEditComponent", ItemDetailEditComponent);
         }
     };
 });
 
-//# sourceMappingURL=item-detail-view.component.js.map
+//# sourceMappingURL=item.detail.edit.component.js.map

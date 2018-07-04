@@ -2,10 +2,11 @@
 import { Router, ActivatedRoute } from "@angular/router";
 import { ItemService } from "./item.service";
 import { Item } from "./item";
+
 @Component({
     selector: "item-detail-edit",
-    templateUrl: "html/ItemDetailEdit.html", 
-    styleUrls: ["style/ItemdetailEdit.css"],
+    templateUrl: "app/item-detail-edit.component.html", 
+    styleUrls: ["app/item-detail-edit.component.css"]
 })
 
 export class ItemDetailEditComponent {

@@ -18,19 +18,10 @@ System.register(["@angular/core"], function (exports_1, context_1) {
             AppComponent = class AppComponent {
                 constructor() {
                     this.title = "OpenGameList";
-                    //    this._router.routeReuseStrategy.shouldReuseRoute = function () {
-                    //        return false;
-                    //    };
-                    //    this._router.events.subscribe((evt) => {
-                    //        if (evt instanceof NavigationEnd) {
-                    //            this._router.navigated = false;
-                    //            window.scrollTo(0, 0);
-                    //        }
-                    //    });
-                    //}
                 }
-                //constructor(private _router: Router) { }
-                ngOnInit() { }
+                ngOnInit() {
+                    window.location.href;
+                }
             };
             AppComponent = __decorate([
                 core_1.Component({

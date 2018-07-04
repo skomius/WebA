@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     gp_less = require('gulp-less'),
     gp_sourcemaps = require('gulp-sourcemaps'),
     gp_typescript = require('gulp-typescript');
-   // gp_uglify = require('gulp-uglify');
+// gp_uglify = require('gulp-uglify');
 
 /// Define paths
 var srcPaths = {
@@ -20,16 +20,17 @@ var srcPaths = {
         'node_modules/reflect-metadata/Reflect.js',
         'node_modules/systemjs/dist/system.src.js',
         'node_modules/typescript/lib/typescript.js'
-],
-js_angular: [
-'node_modules/@angular/**'
-],
-js_rxjs: [
-'node_modules/rxjs/**'
-],
-less: [
-'Scripts/less/**/*.less'
-]
+    ],
+    js_angular: [
+        'node_modules/@angular/**'
+    ],
+    js_rxjs: [
+        'node_modules/rxjs/**'
+    ],
+    less: [
+        'Scripts/less/**/*.less'
+    ],
+    htmlcss: ['Scripts/app/**/*.css', 'Scripts/app/**/*.html']
 };
 
 var destPaths = {
@@ -61,13 +62,18 @@ gulp.task('app_clean', function () {
 // Copy all JS files from external libraries to wwwroot/js
 gulp.task('js', function () {
     gulp.src(srcPaths.js_angular)
-.pipe(gulp.dest(destPaths.js_angular));
-gulp.src(srcPaths.js_rxjs)
-    .pipe(gulp.dest(destPaths.js_rxjs));
+        .pipe(gulp.dest(destPaths.js_angular));
+    gulp.src(srcPaths.js_rxjs)
+        .pipe(gulp.dest(destPaths.js_rxjs));
     return gulp.src(srcPaths.js)
-// .pipe(gp_uglify({ mangle: false })) // disable uglify
+        // .pipe(gp_uglify({ mangle: false })) // disable uglify
         // .pipe(gp_concat('all-js.min.js')) // disable concat
         .pipe(gulp.dest(destPaths.js));
+});
+
+gulp.task('htmlcss', function () {
+    return gulp.src(srcPaths.htmlcss)
+        .pipe(gulp.dest(destPaths.app))
 });
 
 // Process all LESS files and output the resulting CSS in wwwroot/css
@@ -90,11 +96,11 @@ gulp.task('js_clean', function () {
 
 // Watch specified files and define what to do upon file changes
 gulp.task('watch', function () {
-    gulp.watch([srcPaths.app, srcPaths.js], ['app', 'js']);
+    gulp.watch([srcPaths.app, srcPaths.js, srcPaths.less, srcPaths.htmlcss], ['app', 'js']);
 });
 
 // Global cleanup task
 gulp.task('cleanup', ['app_clean', 'js_clean', "less_clean"]);
 
 // Define the default task so it will launch all other tasks
-gulp.task('default', ['app', 'js', 'less', 'watch']);
+gulp.task('default', ['app', 'js', 'less', 'watch', 'htmlcss']);

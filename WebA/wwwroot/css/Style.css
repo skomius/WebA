@@ -6,11 +6,11 @@ item-list {
   padding: 10px;
 }
 item-list.latest {
-  background-color: #ff6a00;
+  background-color: #f0f0f0;
 }
 item-list.most-viewed {
   background-color: #f0f0f0;
 }
 item-list.random {
-  background-color: #e9e9e9;
+  background-color: #f0f0f0;
 }

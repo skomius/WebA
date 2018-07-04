@@ -78,8 +78,8 @@ System.register(["@angular/core", "@angular/router", "./item.service", "./item"]
             ItemDetailEditComponent = __decorate([
                 core_1.Component({
                     selector: "item-detail-edit",
-                    templateUrl: "html/ItemDetailEdit.html",
-                    styleUrls: ["style/ItemdetailEdit.css"],
+                    templateUrl: "app/item-detail-edit.component.html",
+                    styleUrls: ["app/item-detail-edit.component.css"]
                 }),
                 __metadata("design:paramtypes", [item_service_1.ItemService,
                     router_1.Router,
