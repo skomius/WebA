@@ -6,7 +6,6 @@ import { ItemService } from "./item.service";
 @Component({
     selector: "item-detail-view",
     templateUrl: "app/item-detail-view.component.html",
-    styleUrls: ["app/item-detail-view.component.css"],
 })
 export class ItemDetailViewComponent {
     item: Item;

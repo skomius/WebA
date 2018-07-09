@@ -20,7 +20,6 @@
     <None Remove="Scripts\app\app.routing.ts" />
     <None Remove="Scripts\app\favourites.component.ts" />
     <None Remove="Scripts\app\home.component.ts" />
-    <None Remove="Scripts\app\item-detail-edit.component.css" />
     <None Remove="Scripts\app\item-detail-edit.component.html" />
     <None Remove="Scripts\app\item-detail-edit.component.ts" />
     <None Remove="Scripts\app\item-detail-view.component.ts" />
@@ -34,14 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Scripts\app\item-detail-edit.component.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <Content Include="Scripts\app\item-detail-edit.component.html">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Scripts\app\item-detail-view.component.html" />
-    <Content Include="Scripts\app\item-detail-view.component.css" />
     <Content Include="Scripts\less\Style.less" />
   </ItemGroup>
 

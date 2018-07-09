@@ -52,7 +52,6 @@ System.register(["@angular/core", "@angular/router", "./item.service"], function
                 core_1.Component({
                     selector: "item-detail-view",
                     templateUrl: "app/item-detail-view.component.html",
-                    styleUrls: ["app/item-detail-view.component.css"],
                 }),
                 __metadata("design:paramtypes", [item_service_1.ItemService,
                     router_1.Router,

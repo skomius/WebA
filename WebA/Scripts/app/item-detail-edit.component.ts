@@ -5,8 +5,7 @@ import { Item } from "./item";
 
 @Component({
     selector: "item-detail-edit",
-    templateUrl: "app/item-detail-edit.component.html", 
-    styleUrls: ["app/item-detail-edit.component.css"]
+    templateUrl: "app/item-detail-edit.component.html"
 })
 
 export class ItemDetailEditComponent {
