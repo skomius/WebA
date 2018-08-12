@@ -14,7 +14,7 @@ namespace WebA.Controllers
     [Route("api/[controller]")]
     public class ItemsController : Controller
     {
-        private ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext dbContext;
 
         public ItemsController(ApplicationDbContext context)
         {

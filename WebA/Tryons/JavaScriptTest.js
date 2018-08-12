@@ -1,4 +1,4 @@
-﻿(function() { console.log(210); })()
+﻿(function(a) { console.log(a); })(210)
 //---------------------------
 function b() {
     return {
@@ -29,6 +29,7 @@ console.log(multiThree(2)); // 6 is printed
 console.log(multiThree(3));  
 
 //-----------------------------
+//chaining
 function Book(title, author) {
     this.getTitle = function () {
         return "Title: " + title;

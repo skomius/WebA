@@ -50,7 +50,7 @@
     var document = window.document;
 
     var getProto = Object.getPrototypeOf;
-
+   
     var slice = arr.slice;
 
     var concat = arr.concat;
@@ -85,14 +85,14 @@
         return obj != null && obj === obj.window;
     };
 
-
-
-
     var preservedScriptAttributes = {
         type: true,
         src: true,
         noModule: true
     };
+
+    xhttp.open("GET", "ajax_info.txt", true);
+    xhttp.send();
 
     function DOMEval(code, doc, node) {
         doc = doc || document;
@@ -7961,9 +7961,6 @@
             return false;
         }
     });
-
-
-
 
     var rreturn = /\r/g;
 

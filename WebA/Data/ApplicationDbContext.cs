@@ -6,7 +6,7 @@ using WebA.Data;
 
 namespace WebA.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -37,7 +37,7 @@ namespace WebA.Data
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<ApplicationUser> Users { get; set; }
+        //public DbSet<ApplicationUser> Users { get; set; }
     }
 }
 

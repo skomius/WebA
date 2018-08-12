@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using WebA.Data;
 using Nelibur.ObjectMapper;
 using WebA.Data.Items;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace WebA
 {
@@ -23,17 +25,34 @@ namespace WebA
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddEntityFrameworkSqlServer();
-            services.AddDbContext<ApplicationDbContext>(options =>
-           options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+            //services.AddEntityFrameworkSqlServer();
+            services.AddDbContext<ApplicationDbContext>( options =>
+            options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            services.AddScoped<DbSeeder>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequireNonAlphanumeric = true;
 
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                    {
+                        options.Events.OnRedirectToLogin = context =>
+                        {
+                            context.Response.Headers["Location"] = context.RedirectUri;
+                            context.Response.StatusCode = 401;
+                            return Task.CompletedTask;
+                        };
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env,
-            DbSeeder dbSeeder)
+             ApplicationDbContext dbContext)
         {
             
             var builder = new ConfigurationBuilder();
@@ -59,7 +78,7 @@ namespace WebA
 
             try
             {
-                dbSeeder.SeedAsync().Wait();
+                new DbSeeder( dbContext.Users, ).SeedAsync().Wait();
             }
             catch (System.AggregateException ex)
             {

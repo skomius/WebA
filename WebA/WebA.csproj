@@ -14,6 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\test.html" />
+    <Content Remove="wwwroot\test\demo.html" />
+    <Content Remove="wwwroot\test\my_module.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Scripts\app\about.component.ts" />
     <None Remove="Scripts\app\app.component.ts" />
     <None Remove="Scripts\app\app.module.ts" />
@@ -30,6 +36,7 @@
     <None Remove="Scripts\app\object.ts" />
     <None Remove="Scripts\app\page-not-found.component.ts" />
     <None Remove="Scripts\app\post.service.ts" />
+    <None Remove="Tryons\node_moduless\demo.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +45,9 @@
     </Content>
     <Content Include="Scripts\app\item-detail-view.component.html" />
     <Content Include="Scripts\less\Style.less" />
+    <Content Include="Tryons\node_moduless\demo.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +66,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="TinyMapper" Version="2.0.8" />
   </ItemGroup>
@@ -83,6 +95,11 @@
   <ItemGroup>
     <Folder Include="Scripts\js\" />
     <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\test\demo.html" />
+    <None Include="wwwroot\test\my_module.js" />
   </ItemGroup>
 
 </Project>

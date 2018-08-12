@@ -20,7 +20,6 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                     this.title = "OpenGameList";
                 }
                 ngOnInit() {
-                    window.location.href;
                 }
             };
             AppComponent = __decorate([
@@ -33,6 +32,7 @@ System.register(["@angular/core"], function (exports_1, context_1) {
 | <a class="about" [routerLink]="['about']">About</a>
 | <a class="login" [routerLink]="['login']">Login</a>
 | <a class="add" [routerLink]="['item/edit', 0]">Add New</a>
+| <a class ="test" href="test/demo.html">Test</a> 
 </div>
 <router-outlet></router-outlet>
 `
