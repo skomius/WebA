@@ -78,7 +78,7 @@ namespace WebA
 
             try
             {
-                new DbSeeder( dbContext.Users, ).SeedAsync().Wait();
+                new DbSeeder( dbContext.Users ).SeedAsync().Wait();
             }
             catch (System.AggregateException ex)
             {
