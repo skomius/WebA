@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebA", "WebA\WebA.csproj", "{C202F9B1-1D64-43B5-A9D7-6821048AD706}"
 EndProject
+<<<<<<< HEAD
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Universitity", "Universitity\Universitity.csproj", "{78977D43-2C99-4209-AB16-C19396ABB26D}"
+=======
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pure", "Universitity\Pure.csproj", "{78977D43-2C99-4209-AB16-C19396ABB26D}"
+>>>>>>> d4debaa0db6c73905e21c64abaa5334dadbfc290
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
