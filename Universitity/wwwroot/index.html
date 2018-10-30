@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
     <script src="scripts/jquery-3.3.1.min.js"></script>
+    <meta charset="utf-8" />
     <title>OpenGameList</title>
     <script>
         document.onload(function () {
@@ -111,5 +112,20 @@
             ctxt.fill();
             ctxt.stroke();
         </script>
+        <div>
+            <canvas id="pattern" width="500" height="400"></canvas>
+            <script>
+                canvas = document.getElementById("pattern");
+                ctxt = canvas.getContext("2d");
+                ctxt.beginPath();
+                ctxt.lineWidth = 5;
+                var img = new Image();
+                img.src = "binaries/picture.jpg";
+                img.onload = function () {
+                    ctxt.drawImage(img, 0, 0, img.width * .2, img.height * .2);
+                    ctxt.stroke();
+                }
+            </script>
+        </div>
     </body>
 </html>
