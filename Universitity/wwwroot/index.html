@@ -124,8 +124,36 @@
                 img.onload = function () {
                     ctxt.drawImage(img, 0, 0, img.width * .2, img.height * .2);
                     ctxt.stroke();
+                    ctxt.lineWidth = 2;
+                    ctxt.textAlign = "center"
+                        ;
+                    ctxt.font = "24px arial";
+                    ctxt.strokeStyle = "red";
+                    ctxt.strokeText("1. Text with default", 100, 100);
                 }
             </script>
+        </div>
+        <div>
+            <svg>
+                <circle cx="50" cy="50" r="50" onmouseover="redcircle(evt)" onmouseout="greencircle(evt)"></circle>
+            </svg>
+            <script>
+                function redcircle(evt) {
+                    var circle = evt.target;
+                    circle.setAttribute("style", "fill: red")
+                };
+                function greencircle(evt) {
+                    var circle = evt.target;
+                    circle.setAttribute("style", "fill: green");
+                }
+            </script>
+        </div>
+        <div>
+            <svg>
+                <polygon points="10, 15 , 100,100, 200, 200 " fill="purple"></polygon>
+                <polyline points="89, 78, 100, 120, 300, 250" style="stroke: orange"></polyline>
+                <text x="300" y="200" style="stroke: olive; stroke-width: 1">Labas</text>
+            </svg>
         </div>
     </body>
 </html>
