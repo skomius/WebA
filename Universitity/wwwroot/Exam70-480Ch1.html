@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <meta charset="utf-8" />
+    <title>OpenGameList</title>
+    <script>
+        document.onload(function () {
+            var innerDiv = document.getElementById("innerDiv");
+            var newDiv = document.createElement("div");
+            for (var i = 0; i < innerDiv.childNodes.length; i++) {
+                var anchor = newDiv.appendChild(document.createElement("a"));
+                anchor.setAttribute("href", "http://www.bing.ca");
+                anchor.text = innerDiv.childNodes[i].textContent;
+                newDiv.appendChild(document.createElement("br"));
+            }
+            document.querySelector("#outerDiv").replaceChild(newDiv, innerDiv);
+        });
+    </script>
+    <style>
+        #container {
+        }
+    </style>
+</head>
+<body>
+    <div id="outerDiv">
+        <p class='mainPara'>Main Paragraph</p>
+        <ul>
+            <li>First List Item</li>
+            <li>Second List Item</li>
+            <li>Third List Item</li>
+            <li>Fourth List Item</li>
+        </ul>
+        <div id="innerDiv">
+            <p class='subPara' id='P1'>Paragraph 1</p>
+            <p class='subPara' id='P2'>Paragraph 2</p>
+            <p class='subPara' id='P3'>Paragraph 3</p>
+            <p class='subPara' id='P4'>Paragraph 4</p>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    Row 1
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Row 2
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Row 3
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Row 4
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Row 5
+                </td>
+            </tr>
+        </table>
+        <input type="text" /><input type="submit" value="Submit" />
+    </div>
+    <div>
+        <video src="binaries/StartMenu_Win8.mp4" autoplay controls></video>
+    </div>
+    <div>
+        <canvas id="canvas" height="400" width="500"></canvas>
+    </div>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctxt = canvas.getContext('2d');
+        ctxt.beginPath();
+        ctxt.arc(300, 200, 75, 1.75 * Math.PI, 1.25 * Math.PI, false);
+        ctxt.lineTo(150, 125);
+        ctxt.quadraticCurveTo(300, 0, 450, 125);
+        ctxt.lineTo(353, 144);
+        ctxt.strokeStyle = "blue";
+        ctxt.lineCap = "round";
+        ctxt.lineWidth = 10;
+        ctxt.fillStyle = "green";
+        ctxt.fill();
+        ctxt.stroke();
+        ctxt.beginPath();
+        ctxt.rect(350, 50, 50, 50);
+        ctxt.fillStyle = "red";
+        ctxt.fill();
+        ctxt.stroke();
+    </script>
+    <div>
+        <canvas id="gradient" width="500" height="400"></canvas>
+    </div>
+    <script>
+        var canvas = document.getElementById("gradient");
+        var ctxt = canvas.getContext('2d');
+        ctxt.beginPath();
+        ctxt.lineWidth = 5;
+        ctxt.rect(200, 200, 200, 100);
+        var gradient = ctxt.createRadialGradient(200, 200, 5, 250, 250, 100);
+        gradient.addColorStop(0, "Red");
+        gradient.addColorStop(.5, "Orange");
+        gradient.addColorStop(1, "Blue");
+        ctxt.fillStyle = gradient;
+        ctxt.fill();
+        ctxt.stroke();
+    </script>
+    <div>
+        <canvas id="pattern" width="500" height="400" onclick=""></canvas>
+        <style>
+            .tran {
+                transform: rotate(90deg)
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                canvas = document.getElementById("pattern");
+                ctxt = canvas.getContext("2d");
+                ctxt.beginPath();
+                ctxt.lineWidth = 5;
+                var img = new Image();
+                img.src = "binaries/picture.jpg";
+                img.onload = function () {
+                    ctxt.drawImage(img, 0, 0, img.width * .2, img.height * .2);
+                    ctxt.stroke();
+                    ctxt.lineWidth = 2;
+                    ctxt.textAlign = "center";
+                    ctxt.font = "24px arial";
+                    ctxt.strokeStyle = "red";
+                    ctxt.strokeText("1. Text with default", 100, 100);
+                    canvas.onclick = function () {
+                        this.style.transform = "rotate(90deg) translate(50px, 0px) scale(1.5)";
+                    }
+                }
+            }
+        </script>
+    </div>
+    <div>
+        <svg>
+            <circle cx="50" cy="50" r="50" onmouseover="redcircle(evt)" onmouseout="greencircle(evt)" style="visibility:collapse"></circle>
+        </svg>
+        <script>
+            function redcircle(evt) {
+                var circle = evt.target;
+                circle.setAttribute("style", "fill: red")
+            };
+            function greencircle(evt) {
+                var circle = evt.target;
+                //circle.setAttribute("style", "fill: green");
+                circle.style.fill = "green";
+            }
+        </script>
+    </div>
+    <div>
+        <svg>
+            <polygon points="10, 15 , 100,100, 200, 200 " fill="purple"></polygon>
+            <polyline points="89, 78, 100, 120, 300, 250" style="stroke: orange"></polyline>
+            <text x="300" y="200" style="stroke: olive; stroke-width: 1">Labas</text>
+        </svg>
+    </div>
+    <style>
+        .position {
+            height: 100px;
+            width: 100px;
+            background-color: rebeccapurple;
+            border: 5px solid red;
+        }
+
+        .position-acu {
+            position: relative;
+            left: 30px;
+            /*top: 30px;*/
+        }
+
+        .collapse {
+            visibility: collapse
+        }
+    </style>
+    <table>
+        <tr>
+            <td class="position"></td>
+            <td class="position"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td id="coll" class="position"></td>
+        </tr>
+    </table>
+    <script>
+        var tdelem = document.getElementById("coll");
+        tdelem.onclick = function () {
+            this.classList.add("collapse");
+        }
+    </script>
+</body>
+</html>
