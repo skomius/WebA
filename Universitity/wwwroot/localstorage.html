@@ -141,17 +141,25 @@
             background-color: dodgerblue;
             text-align: center;
         }
+
+        .radio-container {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="radio-container">
+            <input type="radio" name="storage" onclick="SessionSelected()" />Session &nbsp;
+            <input type="radio" name="storage" onclick="LocalSelected()" checked="checked" />Local
+        </div>
         <div class="label-input-group">
             <label for="key" class="label">Key:</label>
-            <input id="key" type="text" class="textfield"/>
+            <input id="key" type="text" class="textfield" />
         </div>
         <div class="label-input-group">
             <label for="value" class="label">Value:</label>
-            <input id="value" type="text" class="textfield"/>
+            <input id="value" type="text" class="textfield" />
         </div>
         <div class="buttons-container">
             <div id="button-add" onclick="AddToStorage()" class="button">Add</div>
@@ -160,18 +168,16 @@
         </div>
         <table>
             <thead>
-            <tr>
-                <th>
-                    Key
-                </th>
-                <th>
-                    Value
-                </th>
-            </tr>
+                <tr>
+                    <th>
+                        Key
+                    </th>
+                    <th>
+                        Value
+                    </th>
+                </tr>
             </thead>
-            <tbody id="table-body">
-
-            </tbody>
+            <tbody id="table-body"></tbody>
         </table>
     </div>
     <script>
@@ -179,15 +185,17 @@
 
         var container = document.getElementById("table-body")
 
+        var storage = localStorage;
+
         function UpdateTable() {
             var key;
             var value;
 
             container.innerHTML = "";
 
-            for (let i = 0; i < localStorage.length; i++) {
-                key = localStorage.key(i);
-                value = localStorage.getItem(key);
+            for (let i = 0; i < storage.length; i++) {
+                key = storage.key(i);
+                value = storage.getItem(key);
                 container.innerHTML += "<tr><td>" + key + "</td><td>" + value + "</td></tr>"
 
                 //var row = document.createElement(tr);
@@ -203,25 +211,37 @@
             }
         }
 
+        function SessionSelected() {
+            storage = sessionStorage;
+
+            UpdateTable();
+        }
+
+        function LocalSelected() {
+            storage = localStorage;
+
+            UpdateTable();
+        }
+
         function AddToStorage() {
             var key = document.getElementById("key").value;
             var value = document.getElementById("value").value;
-            localStorage.setItem(key, value);
+            storage.setItem(key, value);
 
             UpdateTable();
         };
 
         function Remove() {
             var keyR = document.getElementById("key").value;
-            localStorage.removeItem(keyR);
+            storage.removeItem(keyR);
 
             UpdateTable();
         }
 
         function Clear() {
-            localStorage.clear();
+            storage.clear();
             UpdateTable();
         }
     </script>
-    </body>
+</body>
 </html>
