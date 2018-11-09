@@ -3,3 +3,11 @@
 # v.1.0.0.25
 #
 #Cache Section. All
+CACHE
+localstorage.html
+index.html
+
+NETWORK:
+
+FALLBACK:
+index.html
