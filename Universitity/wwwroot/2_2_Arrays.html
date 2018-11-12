@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var arr = new Array(5);
+        arr[9] = "lepsis";
+        document.write(arr.length + "<br>");
+
+        var firstArray = ["Jonas", "Petras", "Karolis"];
+        var secondArray = ["Ignas", "Juozas", "Mykolas"];
+        var newArray = firstArray.concat(secondArray);
+        document.write(newArray.toString() + "<br>");
+
+        var num = newArray.indexOf("Ignas", 0);
+        document.write(num + "<br>");
+
+        var join = new Array("Jonas", "Petras", "Karolis");
+        var jj = join.join(";");
+        document.write(jj + "<br>");
+
+        var sports = new Array('soccer', 'basketball', 'hockey', 'football', 'cricket', 'rugby',
+            'tennis', 'badminton');
+        var splicedItems = sports.splice(1, 3, 'golf', 'curling', 'darts');
+        document.write(splicedItems + "<br>");
+        document.write(sports + "<br>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
