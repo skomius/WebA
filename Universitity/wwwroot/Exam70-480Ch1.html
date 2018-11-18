@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <title>OpenGameList</title>
     <script>
-        document.onload(function () {
+        document.onload = (function () {
             var innerDiv = document.getElementById("innerDiv");
             var newDiv = document.createElement("div");
             for (var i = 0; i < innerDiv.childNodes.length; i++) {

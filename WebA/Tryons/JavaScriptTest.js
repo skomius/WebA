@@ -1,4 +1,4 @@
-﻿(function(a) { console.log(a); })(210)
+﻿(function mentor(a){ console.log(a); })(210)
 //---------------------------
 function b() {
     return {
@@ -6,6 +6,7 @@ function b() {
         bn: 5456
     }
 };
+
 
 kutvela = b()
 
@@ -46,6 +47,7 @@ function Book(title, author) {
         author = newAuthor;
     };
 }
+
 function TechBook(title, author, category) {
     this.getCategory = function () {
         return "Technical Category: " + category;

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var button = $("#test");
+            setTimeout(function () { button.focus() }, 2000);
+            button.on("focus", function () {
+                $(this).css("background-color", "red");
+            });
+            button.blur(function () {
+                $(this).css("background-color", "grey");
+            });
+            $(this).keydown(function (e) {
+                $("#text").attr("value", e.keyCode);
+            });
+            $(this).mousemove(function (e) {
+                $('#xxx').attr("value", e.clientX);
+                $('#yyy').attr("value", e.clientY);
+            })
+            
+        })
+    </script>
+    <style>
+        #test{
+            height: 100px;
+            width: 100px;
+            background-color:aqua;
+        }
+        #text, .input{
+            width: 100px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="button" id="test" />
+    </div>
+    <div>
+        <input type="text" id="text" />
+    </div>
+    <div>
+        <input type="text" id="xxx" class="input"/>
+    </div>
+    <div>
+        <input type="text" id="yyy" class="input"/>
+    </div>
+</body>
+</html>
