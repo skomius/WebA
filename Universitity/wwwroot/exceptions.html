@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        try {
+            window.unsupportedmethod();
+        }
+        catch (e) {
+            document.write(e.message + '<br>');
+            document.write(e.number + '<br>');
+            document.write(e.name + '<br>');
+
+            // throw e;
+            throw new Error(54, "very bad")
+        }
+        finally {
+            document.write("final" + '<br>')
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

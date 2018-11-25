@@ -21,6 +21,12 @@
                 $('#xxx').attr("value", e.clientX);
                 $('#yyy').attr("value", e.clientY);
             })
+            $("#notnew").on("drag", function () {
+                $(this).css("background-color", "green");
+            })
+            $("#notnew").on("dragover", function () {
+                $(this).css("background-color", "red");
+            })
             
         })
     </script>
@@ -30,8 +36,9 @@
             width: 100px;
             background-color:aqua;
         }
-        #text, .input{
+        #text, .input {
             width: 100px;
+            background-color: dimgrey;
             height: 20px;
         }
     </style>
@@ -44,10 +51,16 @@
         <input type="text" id="text" />
     </div>
     <div>
-        <input type="text" id="xxx" class="input"/>
+        <input type="text" id="xxx" class="input" />
     </div>
     <div>
-        <input type="text" id="yyy" class="input"/>
+        <input type="text" id="yyy" class="input" />
+    </div>
+    <div class="input" id="notnew" draggable="true">
+
+    </div>
+    <div class="input" id="new" draggable="true">
+
     </div>
 </body>
 </html>
