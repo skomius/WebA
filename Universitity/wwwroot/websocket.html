@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        $(window).on("load", function () {
+            var console = $("#console");
+            var websocket = new WebSocket('http://localhost:54873/', ['soup', 'xmpp']);
+
+        })
+    </script>
+    <style>
+        body {
+            margin: auto
+        }
+
+        #console {
+            height: 500px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <textarea id="console" readonly></textarea>
+    </div>
+</body>
+</html>
