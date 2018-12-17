@@ -1,3 +1,3 @@
-﻿function main (a) {
-    return a 
+﻿onmessage = function (evt) {
+    self.postMessage(evt.data);
 }

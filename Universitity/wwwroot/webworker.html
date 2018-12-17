@@ -23,11 +23,23 @@
     </style>
     <script>
         $(window).on('load', function () {
+
+            var webWorker = new Worker('scripts/work.js');
+
+            webWorker.onmessage = function (evt) {
+                $('#result').val(evt.data);
+            }
+
             $('#result').click(function () {
+                
             })
+
             $('#start').click(function () {
+                webWorker.postMessage("test");
             })
+
             $('#stop').click(function () {
+                webWorker.terminate();
             })
         })
     </script>
