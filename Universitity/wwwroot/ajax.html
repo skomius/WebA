@@ -17,24 +17,24 @@
     </style>
     <script>
         $(window).on('load', function () {
-            $('#send').click(function () {
-                $.ajax({
-                    url: 'Home/AjaxPost',
-                    cashe: false,
-                    dataType: 'json',
-                    type: 'POST',
-                    data: { name: $('#name').val(), id: $('#id').val() },//tobody
-                    success: function (data) {
-                        $('#answer').text("");
-                        $('#answer').val(data.name);
-                        console.log(data.name);
-                    },
-                    error: function (e, status, errorThrowm) {
-                        $('#answer').text("");
-                        $('#answer').text(errorThrowm);
-                    }
-                })
-            })
+            //$('#send').click(function () {
+            //    $.ajax({
+            //        url: 'Home/AjaxPost',
+            //        cashe: false,
+            //        dataType: 'json',
+            //        type: 'POST',
+            //        data: { name: $('#name').val(), id: $('#id').val() },//tobody
+            //        success: function (data) {
+            //            $('#answer').text("");
+            //            $('#answer').val(data.name);
+            //            console.log(data.name);
+            //        },
+            //        error: function (e, status, errorThrowm) {
+            //            $('#answer').text("");
+            //            $('#answer').text(errorThrowm);
+            //        }
+            //    })
+            //})
 
             //// get body doesnt have
             //$('#send').click(function () {
@@ -54,6 +54,30 @@
             //        }
             //    })
             //})
+
+            $('#send').click(function () {
+
+                var person = {
+                    id: 5,
+                    name: 'Tadas'
+                }
+
+                var json = JSON.stringify(person);
+
+                var request = new XMLHttpRequest();
+
+                request.open('POST', 'Home/AjaxPost', false);
+                request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+                //request.timeout = 2000;
+                //request.ontimeout = function () {
+                //    $('#answer').text("");
+                //    $('#answer').text('timeout');
+                //};
+                
+                request.send(json);
+                $('#answer').text("");
+                $('#answer').text('rupuze');
+            })
         })  
     </script>
 </head>
