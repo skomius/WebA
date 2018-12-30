@@ -55,29 +55,46 @@
             //    })
             //})
 
+            //$('#send').click(function () {
+
+            //    var person = {
+            //        id: 5,
+            //        name: 'Tadas'
+            //    }
+
+            //    var json = JSON.stringify(person);
+
+            //    var request = new XMLHttpRequest();
+
+            //    request.open('POST', 'Home/AjaxPost', false);
+            //    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+            //    //request.timeout = 2000;
+            //    //request.ontimeout = function () {
+            //    //    $('#answer').text("");
+            //    //    $('#answer').text('timeout');
+            //    //};
+                
+            //    request.send(json);
+            //    $('#answer').val("");
+            //    $('#answer').val(request.responseText);
+            //})
+
             $('#send').click(function () {
-
-                var person = {
-                    id: 5,
-                    name: 'Tadas'
-                }
-
-                var json = JSON.stringify(person);
 
                 var request = new XMLHttpRequest();
 
-                request.open('POST', 'Home/AjaxPost', false);
-                request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-                //request.timeout = 2000;
-                //request.ontimeout = function () {
-                //    $('#answer').text("");
-                //    $('#answer').text('timeout');
-                //};
-                
-                request.send(json);
-                $('#answer').text("");
-                $('#answer').text('rupuze');
+                request.open('GET', 'json.json', true);
+
+                request.onreadystatechange = () => {
+                    if (request.readyState == 4)
+                        if (request.status == 200)
+                            $('#answer').val(JSON.parse(request.responseText).name);
+                        else
+                            $('#answer').val('Bad');
+                }
+                request.send(null);
             })
+
         })  
     </script>
 </head>
