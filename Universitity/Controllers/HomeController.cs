@@ -14,11 +14,11 @@ namespace Experments.Controllers
     public class HomeController : Controller
     {
         // GET: /<controller>/
-        public string About()
+        public ViewResult About()
         {
             ViewData["Message"] = "Your application description page";
 
-            return "Test";
+            return View();
         }
 
 
