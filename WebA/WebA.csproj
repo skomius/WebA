@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+  <Reference Include="netstandard" />
+</ItemGroup>
+
+  <ItemGroup>
     <None Remove="Scripts\app\about.component.ts" />
     <None Remove="Scripts\app\app.component.ts" />
     <None Remove="Scripts\app\app.module.ts" />
@@ -68,7 +72,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
