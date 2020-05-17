@@ -1,0 +1,13 @@
+debian:10.1
+debian:9.11
+mcr.microsoft.com/dotnet/core/runtime:3.0
+mcr.microsoft.com/dotnet/core/sdk:3.0.100
+mcr.microsoft.com/dotnet/core/aspnet:3.0
+mcr.microsoft.com/mssql/server:2017-CU14-ubuntu
+nats:2.1.0
+grafana/grafana:6.4.3
+prom/prometheus:v2.13.1
+elasticsearch:6.8.3
+kibana:6.8.3
+traefik:1.7.18-alpine
+nginx:1.17.4-alpine

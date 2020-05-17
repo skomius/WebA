@@ -1,0 +1,93 @@
+# v5 adds self-service analytics with Elasticsearch and Kibana
+version: "3.7"
+
+services:
+  signup-db:
+    image: mcr.microsoft.com/mssql/server:2017-CU14-ubuntu
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=DockerCon!!!
+    networks:
+      - app-net
+
+  signup-web:
+    image: dak4dotnet/signup-web-blazor:linux
+    environment:
+      - ReferenceDataApi:Url=http://reference-data-api/api
+    labels:
+      - "traefik.frontend.rule=PathPrefix:/app"
+      - "traefik.frontend.priority=30"
+    depends_on:
+      - signup-db
+      - reference-data-api
+    networks:
+      - app-net
+
+  homepage:
+    image: dak4dotnet/homepage-nginx:linux
+    labels:
+      - "traefik.frontend.rule=PathPrefix:/"
+      - "traefik.frontend.priority=10"
+    networks:
+      - app-net
+
+  proxy:
+    image: traefik:1.7.18-alpine
+    command: --api --docker --docker.watch
+    ports:
+      - "8020:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app-net
+
+  reference-data-api:
+    image: dak4dotnet/reference-data-api:linux
+    environment:
+      - ConnectionStrings:SignUpDb=Server=signup-db;Database=SignUp;User Id=sa;Password=DockerCon!!!
+    labels:
+      - "traefik.frontend.rule=PathPrefix:/api"
+      - "traefik.frontend.priority=20"
+    depends_on:
+      - signup-db
+    networks:
+      - app-net
+
+  message-queue:
+    image: nats:2.1.0
+    networks:
+      - app-net
+
+  signup-save-handler:
+    image: dak4dotnet/signup-save-handler-core:linux
+    depends_on:
+      - signup-db
+      - message-queue
+    networks:
+      - app-net
+
+  signup-index-handler:
+    image: dak4dotnet/signup-index-handler:linux
+    depends_on:
+      - elasticsearch
+      - message-queue
+    networks:
+      - app-net
+
+  elasticsearch:
+    image: elasticsearch:6.8.3
+    networks:
+      - app-net
+
+  kibana:
+    image: kibana:6.8.3
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - app-net
+
+networks:
+  app-net:

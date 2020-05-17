@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: index-handler
+spec:
+  selector:
+    matchLabels:
+      app: signup
+      component: index-handler
+  template:
+    metadata:
+      labels:
+        app: signup
+        component: index-handler
+    spec:
+      containers:
+      - image: dak4dotnet/signup-index-handler:linux
+        name: index-handler
+      nodeSelector:
+        beta.kubernetes.io/os: linux

@@ -1,0 +1,63 @@
+version: '3.1'
+
+services:
+  
+  signup-db:
+    image: dak4dotnet/sql-server:2017
+    networks:
+      - app-net
+
+  signup-web:
+    image: dak4dotnet/signup-web
+    networks:
+      - app-net
+
+  homepage:
+    image: dak4dotnet/homepage
+    networks:
+      - app-net
+
+  proxy:
+    image: dak4dotnet/reverse-proxy
+    networks:
+      - app-net
+
+  reference-data-api:
+    image: dak4dotnet/reference-data-api
+    networks:
+      - app-net
+
+  message-queue:
+    image: nats:2.1.0
+    networks:
+      - app-net
+
+  signup-save-handler:
+    image: dak4dotnet/save-handler
+    networks:
+      - app-net
+
+  signup-index-handler:
+    image: dak4dotnet/index-handler
+    networks:
+      - app-net  
+
+  prometheus:
+    image: dak4dotnet/prometheus
+    networks:
+      - app-net
+
+  grafana:
+    image: dak4dotnet/grafana
+    networks:
+      - app-net
+
+  elasticsearch:
+    image: sixeyed/elasticsearch:5.6.11-nanoserver-sac2016
+    networks:
+      - app-net
+
+  kibana:
+    image: sixeyed/kibana:5.6.11-windowsservercore-ltsc2016
+    networks:
+      - app-net
