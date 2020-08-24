@@ -4,8 +4,7 @@
     template: `
 <h2>{{title}}</h2>
 <div>
-OpenGameList: a production-ready, fully-featured SPA sample
-powered by ASP.NET Core Web API and Angular 2.
+OpenGameList
 </div>
 `
 })
